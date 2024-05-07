@@ -1,0 +1,47 @@
+<!-- This example demonstrates how to set values via attributes and properties (recommended) -->
+<!-- !!Please note that upon loading/saving this sandbox - the property values applied will not be applied without a RESTART!! -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <script
+    type="module"
+    src="https://unpkg.com/deep-chat@1.4.11/dist/deepChat.bundle.js"
+  ></script>
+  <body>
+    <h1>DC Courts AI</h1>
+    <!-- Attributes can be set as strings either directly on the element (demo/textInput) or via a `setAttribute` method on its reference (introMessage).
+      When passing JSON objects make sure that they are first correctly stringified (use the following tool https://jsonlint.com/), functions assigned
+      to properties must not have external references and all regex values are properly escaped.
+      You can also pass values into the component via properties by using the element reference (initialMessages).
+      -->
+    <!-- This example is for Vanilla JS and should be tailored to your framework (see Examples) -->
+
+    <deep-chat
+      directConnection='{
+  "openAI": {
+    "key": "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",
+    "assistant": {
+      "assistant_id": "asst_DYT8NlpMG4S7HHpyxRM4nZ40"
+    }
+  }
+}'
+      style="border-radius: 8px"
+    ></deep-chat>
+  </body>
+  <script type="module">
+    const elementRef = document.getElementById("chat-element");
+    elementRef.initialMessages = [
+      { role: "user", text: "Hey, how are you today?" },
+      { role: "ai", text: "I am doing very well!" },
+    ];
+    elementRef.setAttribute(
+      "introMessage",
+      JSON.stringify({
+        text: "JavaScript demo for the Deep Chat component.",
+      })
+    );
+  </script>
+</html>
